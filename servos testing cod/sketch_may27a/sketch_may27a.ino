@@ -14,7 +14,7 @@ void setup()
    delay(1000);
    Serial.println("ARos loaded succesfully");
    Serial.println("-------------------------");
-   myservo.attach(10);
+   myservo.attach(6);
    Serial.println("calibrating   servo...");
    for (pos = 0; pos <= 180; pos += 1)
       myservo.write(10);

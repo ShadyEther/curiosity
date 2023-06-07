@@ -4,7 +4,7 @@
 //     Servo motor;
 //     int pos;
 // }SERVO;
-int delay_time=15;//default delay time for motr speed
+int delay_time=30;//default delay time for motr speed
 int step=1;//delay step value for motor speed
 
 Servo servos[5];//array of servo joints
@@ -13,8 +13,8 @@ int pos[5]={10,50,90,100,80};//array for holding joint servos positions
 int baudRate=9600;//default baudrate
 
 void setup(){
-    // Serial.begin(baudRate);
-    Serial.begin(9600);
+    Serial.begin(baudRate);
+    // Serial.begin(9600);
     while(!Serial);//wait infinitely for Serial port to connect
     Serial.print("Serial port connected at: " + String(baudRate));
     // Serial.print("Serial port connected at: ");
@@ -23,8 +23,9 @@ void setup(){
     servos[2].attach(6);
     servos[3].attach(9);
     servos[4].attach(10);
+
     for(int i=0;i<5;i++)
-        servos[i].write(pos[i]);
+        servos[i].write(pos[i]);//setitng servos to their initial position...needed for speed calculation
 }
 
 void loop(){
@@ -40,9 +41,9 @@ void driver(){
       // input_String=Serial.readString(); 
         input_command=Serial.readString();//reads the whole command from the input
         input_value=(input_command.substring(1)).toInt();//get the substring starting from index 1 to end and convert it to int
-        Serial.println(input_command);
-        Serial.println(input_command.substring(1));
-        Serial.println(input_value);
+        // Serial.println(input_command);
+        // Serial.println(input_command.substring(1));
+        // Serial.println(input_value);
         switch(input_command[0]){
             case 'A':moveServo(input_value,0);
                       break;
