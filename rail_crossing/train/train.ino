@@ -20,7 +20,7 @@ boolean goesForward = false;
 int distance = 100; // Define an int for distance and speed
 int speedSet = 0;
 
-int duration=500
+int duration=500;
 
 void setup()
 {
@@ -41,8 +41,8 @@ void loop()
   }
   else if (distance <= 30)
   {
-    soundHorn();
-    flashLED();
+    soundHorn(duration);
+    flashLED(duration);
     moveForward();
     delay(100);
   }
@@ -50,7 +50,7 @@ void loop()
   {
     soundHorn(duration);
     flashLED(duration);
-    moveForward()
+    moveForward();
     delay(100);
   }
   else{
@@ -77,10 +77,10 @@ void moveStop()
 {
   for (speedSet = MAX_SPEED; speedSet > 0; speedSet -= MAX_SPEED_OFFSET)
     {
-      motor.setSpeed(speedSet);
+      motor1.setSpeed(speedSet);
       delay(5);
     }
-  motor.run(RELEASE);
+  motor1.run(RELEASE);
   goesForward = false;
 }
 
@@ -89,13 +89,13 @@ void moveForward()
   if (goesForward==false)
   {
     goesForward = true;
-    motor.setSpeed(0);
-    motor.run(FORWARD);
+    motor1.setSpeed(0);
+    motor1.run(FORWARD);
     // Slowly bring up speed to avoid loading down
     // batteries too quickly
     for (speedSet = 0; speedSet < MAX_SPEED; speedSet += MAX_SPEED_OFFSET)
     {
-      motor.setSpeed(speedSet);
+      motor1.setSpeed(speedSet);
       delay(5);
     }
   }
