@@ -13,12 +13,14 @@
 
 NewPing sonar(TRIG_PIN, ECHO_PIN, MAX_DISTANCE);
 
-AF_DCMotor motor1(4); // First motor to connection 1
+AF_DCMotor motor1(1); // First motor to connection 1
 
 boolean goesForward = false;
 
 int distance = 100; // Define an int for distance and speed
 int speedSet = 0;
+
+int duration=500
 
 void setup()
 {
@@ -32,8 +34,8 @@ void loop()
 
   if (distance <= 10)
   {
-    soundHorn();
-    flashLED();
+    soundHorn(duration);
+    flashLED(duration);
     moveStop();
     delay(100);
   }
@@ -46,8 +48,8 @@ void loop()
   }
   else if (distance <= 90)
   {
-    soundHorn();
-    flashLED();
+    soundHorn(duration);
+    flashLED(duration);
     moveForward()
     delay(100);
   }
