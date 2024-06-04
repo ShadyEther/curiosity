@@ -15,7 +15,7 @@ int buzzer[] = {3, 9};
 int green[] = {4, 10};
 int red[] = {5, 11};
 
-int Duration = 15000;
+int Duration = 7000;
 int freq1 = 1000, freq2 = 1500;
 
 void setup()
