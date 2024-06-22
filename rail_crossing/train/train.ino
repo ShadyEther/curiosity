@@ -20,7 +20,7 @@ AF_DCMotor motor2(2);  // First motor to connection 1
 
 boolean goesForward = false;
 
-int distance = 100;  // Define an int for distance and speed
+int distance = 100;
 int speedSet = 0;
 
 int duration = 150;
@@ -33,30 +33,22 @@ void setup() {
 void loop() {
   delay(40);
   distance = readPing();
-  // if (distance<= 10){
-  //   // moveStop();
-  //   soundHorn(duration);
-  // }
-  // else{
-  //   // moveForward();
-  // }
-  // soundHorn(duration);
   if (distance <= 10) {
     moveStop();
-    soundHorn(duration-(duration*0.75));
-    // flashLED(duration);
+    soundHorn(duration - (duration * 0.75));
     delay(100);
-  } else if (distance <= 20) {
-    soundHorn(duration-(duration*0.5));
-    // flashLED(duration);
+  } 
+  else if (distance <= 20) {
+    soundHorn(duration - (duration * 0.5));
     moveForward();
     delay(100);
-  } else if (distance <= 40) {
+  } 
+  else if (distance <= 40) {
     soundHorn(duration);
-    // flashLED(duration);
     moveForward();
     delay(100);
-  } else {
+  } 
+  else {
     moveForward();
   }
 }
@@ -65,11 +57,9 @@ void loop() {
 int readPing() {
   delay(5);
   int cm = sonar.ping_cm();
-
   if (cm == 0) {
     cm = 250;
   }
-
   return cm;
 }
 
@@ -103,19 +93,11 @@ void moveForward() {
 
 
 void soundHorn(int duration) {
-  // digitalWrite(BUZZER, HIGH);
   NewTone(BUZZER, 1000);
   digitalWrite(LED, HIGH);
   delay(duration);
-  // digitalWrite(BUZZER,LOW);
   noNewTone(BUZZER);
   digitalWrite(LED, LOW);
   delay(duration);
 }
 
-// void flashLED(int duration){
-//   digitalWrite(LED, HIGH);
-//   delay(duration);
-//   digitalWrite(LED, LOW);
-//   delay(duration);
-// }
